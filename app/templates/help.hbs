@@ -1,0 +1,68 @@
+﻿<div class="container">
+  <div class="page-header">
+    <h1>How To Mine</h1>
+  </div>
+  <h4>To join our pool, You need to connect your miner as follows</h4>
+
+  <div class="page-header">
+	<h3>Using <a href="https://github.com/ethereum/webthree-umbrella/releases" rel="nofollow" target="_blank">Ethminer</a></h3>
+  </div>  
+  <p>Connect to: <code>{{config.HttpHost}}:{{config.HttpPort}}/&lt;YOUR_WALLET_ADDRESS&gt;/&lt;RIG_ID&gt;</code></p>
+  <dl class="dl-horizontal">
+    <dt>YOUR_WALLET_ADDRESS</dt>
+    <dd>This is your address for payouts, generate one with geth, parity, gexp ... or mine directly to exchange like
+      <a href="http://poloniex.com/" rel="nofollow" target="_blank">Poloniex</a>
+      or <a href="http://bittrex.com/" rel="nofollow" target="_blank">Bittrex</a>.<br>
+      <strong>Example:</strong> <code>0x40184cebb329cbfd3eb58114e6dd7d111d3dae2d</code>.
+    </dd>
+    <dt>RIG_ID</dt>
+    <dd>
+      ID of your farm to distinguish it from your other rig. If you have just one rig, feel free to omit this param.
+      This param must be short alphanumeric string with optional dashes and underscores.<br>
+      <strong>Example:</strong> <code>rig_01</code>
+    </dd>
+  </dl>
+  <p>
+    <strong>Full example:</strong><br>
+	<code>ethminer.exe -F {{config.HttpHost}}:{{config.HttpPort}}/&lt;address&gt;/&lt;worker&gt; -G</code> <br><strong> or </strong><br>
+    <code>ethminer -F {{config.HttpHost}}:{{config.HttpPort}}/&lt;address&gt;/&lt;worker&gt; -G --farm-recheck 200</code>.<br><br>
+    <span class="label label-info">Hint:</span> If you are compiling ethminer from latest source, please also use
+      extra <code>--disable-submit-hashrate</code> option.
+  </p>
+  
+  <div class="page-header">
+    <h3>Using <a href="https://bitcointalk.org/index.php?topic=1433925.0" rel="nofollow" target="_blank">Claymore</a></h3>
+  </div>
+    <p>Connect to stratum (GPU): <code>stratum+tcp://{{config.StratumHost}}:{{config.StratumPort}}</code></p>
+	<p>Connect to stratum (Nicehash): <code>stratum+tcp://{{config.StratumHost}}:{{config.StratumNicehashPort}}</code></p>
+	
+	<strong>Full example:</strong> <br>
+	<code>
+	SET GPU_FORCE_64BIT_PTR 0 <br>
+	SET GPU_MAX_HEAP_SIZE 100 <br>
+	SET GPU_USE_SYNC_OBJECTS 1 <br>
+	SET GPU_MAX_ALLOC_PERCENT 100 <br>
+	SET GPU_SINGLE_ALLOC_PERCENT 100 <br>
+	
+	./ETHDCRMINER64 -epool stratum+tcp://{{config.StratumHost}}:{{config.StratumPort}} -ewal YOUR_WALLET_ADDRESS -epsw x -eworker RIG_ID -allcoins EXP -allpools 1 -logfile noappend_log.txt -dbg 0 -tt 70 -fanmin 56 -fanmax 100 -r -1 <br>
+	</code>
+  <div class="page-header">
+    <h3>Advices</h3>
+  </div>
+  <p>CPU mining is not efficiently. Not recommended!</p>
+
+  <div class="page-header">
+    <h3>FAQs</h3>
+  </div>
+  <dl class="dl-horizontal">
+    <dt>Question:</dt>
+    <dd>How to process payment?</dd>
+    <dt>Answer:</dt>
+    <dd>Payment is processed by Pay-Per-Share (PPS).</dd>
+
+    <dt>Question:</dt>
+    <dd>I've started mine, it's been working for a while, but I do not see any payments. This is normal? If yes, why?</dd>
+    <dt>Answer:</dt>
+    <dd>This is normal and means that your balance has not yet reached the threshold.</dd>
+  </dl>
+</div>

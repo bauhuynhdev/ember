@@ -1,0 +1,36 @@
+﻿<div class="container">
+  {{#if model.workers}}
+  <h4>Your workers</h4>
+  <table class="table table-condensed table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Hashrate (rough, short average)</th>
+        <th>Hashrate (accurate, long average)</th>
+        <th>Last Share</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each-in model.workers as |k v|}}
+        <tr class="{{if v.offline "warning" "success"}}">
+          <td>{{k}}</td>
+          <td>{{format-hashrate v.hr}}</td>
+          <td>{{format-hashrate v.hr2}}</td>
+          <td>{{format-relative (seconds-to-ms v.lastBeat)}}</td>
+        </tr>
+      {{/each-in}}
+    </tbody>
+  </table>
+  {{else}}
+    <h3>No workers</h3>
+  {{/if}}
+  <div class="alert alert-info" role="alert">
+    <span class="sr-only">Note:</span>
+    Your average hashrate will be gradually refined until you send enough hashrate for evaluation.<br/>
+    There are two types of evaluation period, long and short. The long period is 3 hours, and the short one is 30 minutes.<br/>
+    Faulty workers will be highlighted in the table if they did not share within 1/2 of a short evaluation period, so that you can identify and check to eliminate the problem.
+  </div>
+  <div class="alert alert-info" role="alert">
+    <strong>Your statistic in JSON API URL:</strong> <a href="api/accounts/{{model.login}}">Download</a>.
+  </div>
+</div>

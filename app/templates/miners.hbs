@@ -1,0 +1,31 @@
+﻿<div class="jumbotron">
+  <div class="container">
+    <h4>Total Miners: <span class="label label-info">{{model.minersTotal}}</span></h4>
+	<h4>Total Hashrate: <span class="label label-info">{{format-hashrate model.hashrate}}</span></h4>
+  </div>
+</div>
+<div class="container">
+  {{#if model.miners}}
+  <h4>Active Miners</h4>
+  <table class="table table-condensed table-striped">
+    <thead>
+      <tr>
+        <th>Login</th>
+        <th>Hashrate</th>
+        <th>Last activity</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each model.miners as |m|}}
+      <tr class="{{if m.offline "warning"}}">
+        <td>{{#link-to 'account' m.login class='hash'}}{{m.login}}{{/link-to}}</td>
+        <td>{{format-hashrate m.hr}}</td>
+        <td>{{format-date-locale m.lastBeat}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{else}}
+  <h3>No active miners</h3>
+  {{/if}}
+</div>

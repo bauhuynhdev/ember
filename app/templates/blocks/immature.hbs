@@ -1,0 +1,23 @@
+﻿{{#if model.immature}}
+<h4>Unconfirmed blocks</h4>
+
+<div class="table-responsive">
+  <table class="table table-condensed table-striped">
+    <thead>
+      <tr>
+		  <th>Height</th>
+		  <th>Block Hash</th>
+		  <th>Time Found</th>
+		  <th>Variance</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each model.immature as |block|}}
+        {{partial "blocks/block"}}
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+{{else}}
+<h3>No unconfirmed blocks</h3>
+{{/if}}

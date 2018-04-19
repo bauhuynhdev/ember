@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PIRL Mining Pool</title>
+<!--	<link rel="shortcut icon" href="http://poseidon.pirl.io/static/img/favicon.png"> -->
+	<link rel="shortcut icon" href="{{rootURL}}favicon.ico">
+    <meta name="description" content="High profitability Ethash mining pool"/>
+    <meta name="keywords" content="Ethash, Ethereum, pool, mining, cryptocurrency"/>
+    <script src="https://cdn.polyfill.io/v1/polyfill.min.js?features=Intl.~locale.en"></script>
+    {{content-for "head"}}
+    <link rel="stylesheet" href="{{rootURL}}assets/vendor.css">
+    <link rel="stylesheet" href="{{rootURL}}assets/open-ethereum-pool.css">
+    {{content-for "head-footer"}}
+  </head>
+  <body>
+    {{content-for "body"}}
+
+    <script src="{{rootURL}}assets/vendor.js"></script>
+    <script src="{{rootURL}}assets/open-ethereum-pool.js"></script>
+
+    {{content-for "body-footer"}}
+
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">&copy;<a href="https://www.miningkorea.org" rel="nofollow" target="_blank">MININGKOREA Corp.</a> 2018 | PIRL MINING POOL
+<!--      <strong>Donate:</strong>
+          <a href="https://pirl.site/addr/0x39636d73ba6e1fcb57cc1b4c86a40db9983ca3de" rel="nofollow" target="_blank">0x39636d73ba6e1fcb57cc1b4c86a40db9983ca3de(Pirl address)</a> -->
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
